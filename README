@@ -1,0 +1,11 @@
+This directory contains some utility modules for general programming 
+which came from Liang,David's personal ideas. The author wrote these
+codes mainly due to his personal interst, and he hope them  would be 
+useful for you.
+
+These modules are released under the GPLv3 license.
+
+As we never want to rebuild the wheel, some of the modules contained here
+depend on some other libraries. These depending libraries are not collected
+into this directory. In order to compile the codes in this directory, you 
+should download them by yourself.

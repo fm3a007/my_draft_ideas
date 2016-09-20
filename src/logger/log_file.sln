@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "logger", "log_file.vcproj", "{6D93758A-0D85-4A0C-A113-055E60ACACD2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_logger", "test.vcproj", "{435DF6C3-8A67-47C8-A69F-318D2C697F03}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6D93758A-0D85-4A0C-A113-055E60ACACD2} = {6D93758A-0D85-4A0C-A113-055E60ACACD2}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6D93758A-0D85-4A0C-A113-055E60ACACD2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6D93758A-0D85-4A0C-A113-055E60ACACD2}.Debug|Win32.Build.0 = Debug|Win32
+		{6D93758A-0D85-4A0C-A113-055E60ACACD2}.Release|Win32.ActiveCfg = Release|Win32
+		{6D93758A-0D85-4A0C-A113-055E60ACACD2}.Release|Win32.Build.0 = Release|Win32
+		{435DF6C3-8A67-47C8-A69F-318D2C697F03}.Debug|Win32.ActiveCfg = Debug|Win32
+		{435DF6C3-8A67-47C8-A69F-318D2C697F03}.Debug|Win32.Build.0 = Debug|Win32
+		{435DF6C3-8A67-47C8-A69F-318D2C697F03}.Release|Win32.ActiveCfg = Release|Win32
+		{435DF6C3-8A67-47C8-A69F-318D2C697F03}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
