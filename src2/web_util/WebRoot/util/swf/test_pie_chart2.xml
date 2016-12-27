@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Explorer v2.0 by Mergesoft (www.mergesoft.com)-->
+<chart>
+	<title>piechart_test  111 ----- !!! ----</title>
+	<el>
+		<n>John</n>
+		<d1>1300</d1>
+	</el>
+	<el>
+		<n>BBBB</n>
+		<d1>1300</d1>
+	</el>
+	<el>
+		<n>CCC</n>
+		<d1>1300</d1>
+	</el>
+</chart>

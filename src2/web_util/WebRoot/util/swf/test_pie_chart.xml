@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Explorer v2.0 by Mergesoft (www.mergesoft.com)-->
+<chart>
+	<title>piechart_test  111 ----- !!! ----</title>
+	<name>
+		<n1>name1</n1>
+		<n2>name2</n2>
+		<n3>name3</n3>
+		<n4>name4</n4>
+		<n5>name5</n5>
+	</name>
+	<el>
+		<n>John</n>
+		<d1>1300</d1>
+	</el>
+	<el>
+		<n>李四</n>
+		<d1>800</d1>
+	</el>
+	<el>
+		<n>aa</n>
+		<d1>390</d1>
+	</el>
+	<el>
+		<n>David</n>
+		<d1>1300</d1>
+	</el>
+	<el>
+		<n>Alan</n>
+		<d1>1300</d1>
+	</el>
+</chart>

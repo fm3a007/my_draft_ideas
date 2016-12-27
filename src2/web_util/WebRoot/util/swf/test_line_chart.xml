@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Explorer v2.0 by Mergesoft (www.mergesoft.com)-->
+<chart>
+	<title>column chart demo</title>
+	<series>2</series>
+	<name>
+		<n1>name1</n1>
+		<n2>name2</n2>
+		<n3>name3</n3>
+		<n4>name4</n4>
+		<n5>name5</n5>
+	</name>
+	<el>
+		<n>Jan</n>
+		<d1>1300</d1>
+		<d2>300</d2>
+	</el>
+	<el>
+		<n>Feb</n>
+		<d1>750</d1>
+		<d2>900</d2>
+	</el>
+	<el>
+		<n>Mar</n>
+		<d1>1360</d1>
+		<d2>380</d2>
+	</el>
+	<el>
+		<n>Apr</n>
+		<d1>1300</d1>
+		<d2>300</d2>
+	</el>
+	<el>
+		<n>May</n>
+		<d1>750</d1>
+		<d2>900</d2>
+	</el>
+	<el>
+		<n>Jun</n>
+		<d1>1360</d1>
+		<d2>380</d2>
+	</el>
+</chart>

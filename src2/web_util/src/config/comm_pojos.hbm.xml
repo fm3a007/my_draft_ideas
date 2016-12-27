@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="my.webframework.common.pojo" >
+	<class name="LogObj" table="sys_operate_info">
+		<id name="log_id" type="java.lang.Integer" column="log_id" access="field" >
+       		<generator class="native" />
+   	 	</id>
+    	<property name="log_time" type="timestamp" column="log_time" access="field"/>
+    	<property name="usr_id" type="java.lang.Integer" column="usr_id" precision="10" scale="0"  access="field"/>
+    	<property name="op_code" type="java.lang.Integer" column="op_code" precision="10" scale="0"  access="field"/>
+    	<property name="log_level" type="java.lang.Integer" column="log_level" precision="10" scale="0"  access="field"/>
+		<property name="msg" type="java.lang.String" column="msg" access="field"/>
+		<property name="finish_time" type="timestamp" column="finish_time" access="field"/>
+		<property name="op_result" type="java.lang.Integer" column="op_result" precision="10" scale="0"  access="field"/>
+		<property name="original_id" type="java.lang.Integer" column="original_id" precision="10" scale="0"  access="field"/>
+		<property name="original_sn" type="java.lang.String" column="original_sn" access="field"/>
+		<property name="op_user" type="java.lang.String" column="op_user" access="field"/>
+		<property name="user_dn" type="java.lang.String" column="user_dn" access="field"/>
+		<property name="op_type" type="java.lang.Integer" column="op_type" precision="10" scale="0"  access="field"/>
+		<property name="des_sn" type="java.lang.String" column="des_sn" access="field"/>
+		<property name="is_upload" type="java.lang.Integer" column="is_upload" precision="10" scale="0"  access="field"/>
+	</class>
+</hibernate-mapping>
