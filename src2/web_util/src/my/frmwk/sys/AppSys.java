@@ -58,6 +58,18 @@ public interface AppSys {
 	 */
 	public	Session	getDbSession();
 
+
+	/**
+	 * 获取配置参数，以 String类型返回.
+	 *
+	 * @param key 配置项名, 格式: path1/path2/path3/.../conf_key
+	 * @return	配置项的值,若无对应的配置项则返回 null.
+	 */
+	public	String	getConfString( String key);
 	
+	/**
+	 * 获取配置参数，作用同 getConfString(),以 float类型返回.
+	 */
+	public	float	getConfFloat( String key);
 	
 }

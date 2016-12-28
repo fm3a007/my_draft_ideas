@@ -13,6 +13,9 @@
 package my.frmwk.sys.impl;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -77,14 +80,7 @@ public class AppSysImpl implements AppSys {
 		return logger;
 	}
 	
-	/**
-	 * 获得 **主数据库** 的一个新连接, 注意:使用者请保管好该连接!
-	 * 
-	 * 由于数据库连接是全局资源, 而且关系到系统整体性能, 
-	 * 应避免占用不必要的连接, 并且尽快释放.
-	 * 
-	 * @return 
-	 */
+	// 见接口的说明
 	public	Session	getDbSession(){
 		return	getSessionFactory().openSession();
 	}
@@ -133,11 +129,39 @@ public class AppSysImpl implements AppSys {
 		super.finalize();
 	}
 	
+	protected	Map<String, String>	m_mapConfList = new HashMap<String, String>();
+	
+	
+	@Override
+	public String getConfString(String key) {
+		return m_mapConfList.get( key);
+	}
+
+	@Override
+	public float getConfFloat(String key) {
+		float res = 0.0f;
+		String str = getConfString( key);
+		if(null!=str){
+			try{
+				res = Float.parseFloat( str);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	
+		return	res;
+	}
 	
 	/**
-	 * @param args
+	 * 提供给初始化相关的程序调用，业务逻辑程序不应该用到这个方法.
+	 *
+	 * @param key
+	 * @param val
+	 * 
+	 * @deprecated <业务逻辑程序不应该用到这个方法>
 	 */
-	public static void main(String[] args) {
+	public	void	setConfString( String key, String val){
+		m_mapConfList.put(key, val);
 	}
 
 }

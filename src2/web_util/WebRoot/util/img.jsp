@@ -10,10 +10,6 @@
 	if(request.getParameter("width")!=null){
 		width = Integer.parseInt(request.getParameter("width"));
 	}
-	// 这段是由于先前的人变量命名时张冠李戴, 还留在这里是为了兼容其他已经做好了的程序.
-	if(request.getParameter("size")!=null){
-		height = Integer.parseInt(request.getParameter("size"));
-	}
 	if(request.getParameter("height")!=null){
 		height = Integer.parseInt(request.getParameter("height"));
 	}
