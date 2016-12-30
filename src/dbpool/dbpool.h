@@ -8,6 +8,8 @@
  *      Please define your customized OTL_SPECIFICATION macro in a otl_customizing.h.
  *	
  *	by:	Liang,David @ 2011-3-24
+ * 
+ * These source files are released under the GPLv3 license.
  *
  */
 

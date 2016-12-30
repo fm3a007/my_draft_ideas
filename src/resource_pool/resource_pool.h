@@ -6,6 +6,8 @@
  *  \n
  *	
  *	by:	Liang,David @ 2013-6-28
+ * 
+ * These source files are released under the GPLv3 license.
  *
  */
 

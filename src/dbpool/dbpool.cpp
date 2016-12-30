@@ -4,6 +4,9 @@
  *		db pool implementation
  *
  *	Author:	David
+ * 
+ * These source files are released under the GPLv3 license.
+ *
  *	Date:	2011-3-24
  *
  */

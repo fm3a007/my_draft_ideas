@@ -6,6 +6,8 @@
  * 
  * @author Liang,David
  * 
+ * These source files are released under the GPLv3 license.
+ * 
  * \b Modify_log:
  * 	- 2014-9-9 David: file create
  * 
