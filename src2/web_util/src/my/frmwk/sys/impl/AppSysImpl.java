@@ -13,8 +13,14 @@
 package my.frmwk.sys.impl;
 
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -37,24 +43,21 @@ public class AppSysImpl implements AppSys {
 	
 
 	/**
-	 * 构造函数,需要外部提供AppConf和Hibernate的Configuration对象.
-	 * 
-	 * 由外部提供直接可用的对象是为了可方便地将该类作为模块整合到更高阶的系统中.
-	 */
-	public AppSysImpl( Configuration hibernateCfg ) {
-		logger = new LoggerOutputForDebug();
-		hibernateConfig = hibernateCfg;
-	}
-
-	/**
 	 * 构造函数,需要外部提供系统参数配置文件和Hibernate配置文件.
 	 * 
 	 * 通过配置文件来加载配置,能方便地把该类直接作为一个独立的完整系统使用.
+	 * 
+	 * @param confPath
+	 * @param hibernateCfgPath
+	 * @param logerFilePath
 	 */
-	public AppSysImpl( String logerFilePath, String hibernateCfgPath ) {
+	public AppSysImpl( String confPath, String hibernateCfgPath, String logerFilePath ) {
+		if(null!=confPath){
+			loadConf(confPath);
+		}
 		hibernateConfig = new Configuration();
 		hibernateConfig.configure( hibernateCfgPath);
-		logger = new LoggerFileImpl(logerFilePath);
+		logger = null==logerFilePath ? new LoggerOutputForDebug() :new LoggerFileImpl(logerFilePath);
 	}
 
 	/**
@@ -162,6 +165,32 @@ public class AppSysImpl implements AppSys {
 	 */
 	public	void	setConfString( String key, String val){
 		m_mapConfList.put(key, val);
+	}
+
+	protected	int	loadConf( String confPath ){
+		
+		Properties pro = new Properties();
+		try {
+			String path = confPath;
+			if(-1 != System.getProperty("os.name").indexOf("Windows")){
+				path = path.substring(1);
+			}
+			FileInputStream file = new FileInputStream(path);
+			try {
+				pro.load(file);
+				Set keyValue = pro.keySet();
+				for (Iterator it = keyValue.iterator(); it.hasNext();){
+					String key = (String) it.next();
+					setConfString(key, pro.getProperty(key));
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		pro.clear();
+		return	0;
 	}
 
 }

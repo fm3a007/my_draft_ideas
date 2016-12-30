@@ -9,6 +9,7 @@
  * @version 1.0
  *
  */
+
 package my.theApp;
 
 
@@ -75,7 +76,9 @@ public class theApp {
 
 	/** 除止外部构造 */
 	protected theApp( ) {
-		sys = new AppSysImpl( cfgPath,  hibernateCfg);
+		String path = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+		path += cfgPath;
+		sys = new AppSysImpl( path,  hibernateCfg, null);
 		sys.start();
 	}
 
