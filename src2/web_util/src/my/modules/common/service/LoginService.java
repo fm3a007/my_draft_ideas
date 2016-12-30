@@ -2,12 +2,14 @@
  * \file
  * @see LoginService
  *
- * copyright (C) 2000, 2013, xxxx, co.,ltd
+ * 
  *
  * @author David.Liang
  *
  * @version 1.0
  *
+ *  
+ * These source files are released under the GPLv3 license.
  */
 package my.modules.common.service;
 

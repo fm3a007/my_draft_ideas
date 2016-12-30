@@ -3,11 +3,13 @@
  * @see Logger .
  *  
  * 
- * copyright (C) 2000, 2013, xxxx, co.,ltd
+ * 
  * 
  * 
  * @author Liang,David
  *  
+ * These source files are released under the GPLv3 license.
+ *
  */
 
 

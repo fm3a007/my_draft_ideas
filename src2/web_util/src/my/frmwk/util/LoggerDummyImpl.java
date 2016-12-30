@@ -3,6 +3,9 @@
  * 
  * 对 Logger 接口的哑元实现.
  * 这个类不输出任何日志, 简化各功能模块的内部逻辑处理.
+ *
+ * These source files are released under the GPLv3 license.
+ *
  */
 package my.frmwk.util;
 

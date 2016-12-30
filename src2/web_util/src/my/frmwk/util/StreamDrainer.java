@@ -2,9 +2,8 @@
  * \file
  * @see StreamDrainer.
  * 
- * copyright (C) 2000, 2011, xxxx, co.,ltd
- * 
- * @author zjw
+ * These source files are released under the GPLv3 license.
+ *
  *  
  * @version 1.0 
  * 
@@ -21,7 +20,7 @@ import java.io.InputStreamReader;
 /**
  * 读取标准输出和标准错误的内容.
  * 
- * @author jiaweiz
+ * @author David
  *
  */
 public class StreamDrainer implements Runnable  {

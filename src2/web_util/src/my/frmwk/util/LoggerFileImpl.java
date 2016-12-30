@@ -1,12 +1,13 @@
 /**
  * \file
  *
- * copyright (C) 2000, 2013, xxxx, co.,ltd
+ * 
  *
- * @author HCW,CCB
+ * @author David
  *
  * @version 1.0
  *
+ * These source files are released under the GPLv3 license.
  */
 
 
@@ -20,7 +21,7 @@ import java.util.Date;
 /**
  * 将日志记录到文件中,对 @see Logger的实现.
  * 
- * @author administrator
+ * @author David
  * 
  */
 public class LoggerFileImpl extends Logger {

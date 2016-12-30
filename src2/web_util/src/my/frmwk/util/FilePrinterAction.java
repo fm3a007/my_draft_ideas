@@ -1,5 +1,7 @@
 /**
  * 
+ *  
+ * These source files are released under the GPLv3 license.
  * 
  * 
  */
@@ -20,7 +22,7 @@ import javax.servlet.http.HttpSession;
 
 
 /**
- * @author administrator
+ * @author David
  * 
  */
 public class FilePrinterAction {

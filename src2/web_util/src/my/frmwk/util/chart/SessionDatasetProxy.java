@@ -1,6 +1,8 @@
 /**
  * SessionDatasetProxy.java
  * 
+ * These source files are released under the GPLv3 license.
+ *
  */
 package my.frmwk.util.chart;
 
@@ -16,7 +18,6 @@ import javax.servlet.http.HttpSession;
  * @author	Liang,David
  * Date:	2011-3-6
  * 
- * Copyright:	China xxxx 2011
  *
  */
 public class SessionDatasetProxy {

@@ -1,5 +1,7 @@
 /**
  * BarChartDataSet.java
+ * These source files are released under the GPLv3 license.
+ *
  */
 
 /**
@@ -16,7 +18,7 @@ import java.util.Map;
 
 
 /**
- * @author lianghh
+ * @author David
  * 饼状图数据集flex
  */
 public class FlexPieDataSet {

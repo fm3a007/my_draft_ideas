@@ -2,9 +2,11 @@
  * \file
  * @see IPv4Util
  *
- * copyright (C) 2000, 2013, xxxx, co.,ltd
+ * 
+ * These source files are released under the GPLv3 license.
  *
- * @author hcw
+ *
+ * @author David
  *
  * @version 1.0
  *

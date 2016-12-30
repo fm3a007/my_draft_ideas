@@ -1,10 +1,16 @@
+/**
+ *	\file
+ * These source files are released under the GPLv3 license.
+ */
+
+
 package my.frmwk.util.chart;
 
 import java.util.List;
 import java.util.Map;
 
 /**
- * @author lianghh
+ * @author David
  * 报表显示vo，专门用来显示报表所需的内容
  */
 public class ReportVo {

@@ -1,5 +1,7 @@
 /**
  * BarChartDataSet.java
+ * These source files are released under the GPLv3 license.
+ *
  */
 
 /**
@@ -15,7 +17,7 @@ package my.frmwk.util.chart;
 import org.jfree.data.general.DefaultPieDataset;
 
 /**
- * @author lianghh
+ * @author David
  * 饼状图数据集jfreechar
  */
 public class PieChartDataSet {

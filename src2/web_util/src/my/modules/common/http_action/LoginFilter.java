@@ -2,9 +2,11 @@
  * \file
  * @see LoginFilter .
  *
- * copyright (C) 2000, 2013, xxxx, co.,ltd
+ * 
  *
  * @author David.Liang
+ *  
+ * These source files are released under the GPLv3 license.
  *
  * @version 1.0
  *

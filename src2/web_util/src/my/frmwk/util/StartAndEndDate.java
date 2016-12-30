@@ -1,3 +1,8 @@
+/**
+ *
+ *  
+ * These source files are released under the GPLv3 license.
+ */
 package my.frmwk.util;
 
 import java.util.Calendar;

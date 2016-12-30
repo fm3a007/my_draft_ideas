@@ -4,9 +4,10 @@
  * Description:
  * 	A demo program for report_generating_process
  * 
+ * These source files are released under the GPLv3 license.
+ *
  * @author	David
  * Date:	2011-3-6
- * Copyright:China xxxx 2011
  */
 package my.frmwk.util.chart;
 

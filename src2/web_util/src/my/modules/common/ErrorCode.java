@@ -1,16 +1,19 @@
 /**
  * \file
+ *
  * 该类定义各模块里用到的错误码及其含义.
+ * These modules are released under the GPLv3 license.
  * 
  * =============该类定义各模块里用到的错误码及其含义===========。
  * 
  * 
- * copyright (C) 2000, 2011, xxxx, co.,ltd
  * 
  * 
  * 
+ * These source files are released under the GPLv3 license.
+ *
  * @author 
- *  
+ *
  */
 
 package my.modules.common;
@@ -28,7 +31,7 @@ import my.frmwk.util.ErrMsg;
  * 
  * 注意： 错误码必须小于-10000
  * 
- * @author zjw
+ * @author David
  * 
  */
 public class ErrorCode {

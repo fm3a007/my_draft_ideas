@@ -2,7 +2,9 @@
  * \file
  * @see AppSysImpl
  *
- * copyright (C) 2000, 2013, xxxx, co.,ltd
+ * 
+ *
+ * These source files are released under the GPLv3 license.
  *
  * @author David.Liang
  *
@@ -36,7 +38,7 @@ import my.frmwk.util.LoggerOutputForDebug;
  * 
  * 对AppContext的实现.
  * 
- * @author administrator
+ * @author David
  *
  */
 public class AppSysImpl implements AppSys {

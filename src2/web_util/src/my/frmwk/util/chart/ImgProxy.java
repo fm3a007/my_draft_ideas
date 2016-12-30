@@ -4,16 +4,17 @@
  * 
  * 
  * 
- * copyright (C) 2001, 2011, xxxx, co.,ltd
  * 
- * @author zyj
+ * 
+ * These source files are released under the GPLv3 license.
+ *
+ * @author David
  *  
  * @version 1.0
  * 
  * @see 
  * Modify log:
- * 	 - 2011-7-29 zyj
- *   - 2013-11-22 Liang,David 将纯粹的功能与WEB环境分离, 以方便重用.
+ *   -# 2013-11-22 Liang,David 将纯粹的功能与WEB环境分离, 以方便重用.
  * 
  */
 package my.frmwk.util.chart;
@@ -57,7 +58,7 @@ import org.jfree.util.Rotation;
 
 /**
  * @description 工具类报表图片.
- * @author zyj
+ * @author David
  * @version 1.0
  */
 public class ImgProxy extends ImgService {

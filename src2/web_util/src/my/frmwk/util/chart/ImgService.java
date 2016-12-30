@@ -4,9 +4,11 @@
  * 
  * 
  * 
- * copyright (C) 2001, 2011, xxxx, co.,ltd
  * 
- * @author zyj
+ * 
+ * These source files are released under the GPLv3 license.
+ *
+ * @author David
  *  
  * @version 1.0
  * 
@@ -250,7 +252,6 @@ public class ImgService {
 	/**
 	 * 主要展示三维效果
 	 * 
-	 * @author wesley
 	 * @param chartId
 	 * @param type
 	 * @return

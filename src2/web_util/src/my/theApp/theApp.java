@@ -2,9 +2,11 @@
  * \file
  * 最终产品的整合层程序文件, @see theApp .
  *
- * copyright (C) 2000, 2013, xxxx, co.,ltd
+ * 
  *
  * @author David.Liang
+ *  
+ * These source files are released under the GPLv3 license.
  *
  * @version 1.0
  *

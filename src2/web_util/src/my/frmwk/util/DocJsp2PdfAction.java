@@ -1,7 +1,8 @@
 /**
  * \file
  * 
- * @copyright xxxx co., ltd
+ * These source files are released under the GPLv3 license.
+ *
  * @author Liang,David
  * 
  */
@@ -23,7 +24,7 @@ import javax.servlet.http.HttpSession;
 
 
 /**
- * @author administrator
+ * @author David
  * 
  */
 public class DocJsp2PdfAction {

@@ -1,5 +1,7 @@
 /**
  * BarChartDataSet.java
+ * These source files are released under the GPLv3 license.
+ *
  */
 
 /**
@@ -16,7 +18,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 
 /**
- * @author lianghh
+ * @author David
  * 柱状图数据集jfreechar
  */
 public class BarChartDataSet {

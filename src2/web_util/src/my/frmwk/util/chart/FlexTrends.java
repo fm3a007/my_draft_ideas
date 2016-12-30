@@ -1,5 +1,7 @@
 /**
  * BarChartDataSet.java
+ *  
+ * These source files are released under the GPLv3 license.
  */
 
 /**
@@ -20,7 +22,7 @@ import org.jfree.chart.JFreeChart;
 
 
 /**
- * @author lianghh
+ * @author David
  * 曲线图数据集flex
  */
 public class FlexTrends {
