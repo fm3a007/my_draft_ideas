@@ -54,7 +54,6 @@ public class BufResponse implements HttpServletResponse {
 			osWrt = new OutputStreamWriter(buf,"UTF-8");
 			prtr = new PrintWriter( osWrt);
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
 			if(null==osWrt){
@@ -365,7 +364,6 @@ public class BufResponse implements HttpServletResponse {
 		try {
 			flushBuffer();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return buf.toByteArray();

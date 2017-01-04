@@ -2,7 +2,7 @@
  * \file
  * @see AppSysImpl
  *
- * 
+ *
  *
  * These source files are released under the GPLv3 license.
  *
@@ -18,6 +18,8 @@ package my.frmwk.sys.impl;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -179,7 +181,8 @@ public class AppSysImpl implements AppSys {
 			}
 			FileInputStream file = new FileInputStream(path);
 			try {
-				pro.load(file);
+				Reader reader = new InputStreamReader(file, "UTF-8");
+				pro.load(reader);
 				Set keyValue = pro.keySet();
 				for (Iterator it = keyValue.iterator(); it.hasNext();){
 					String key = (String) it.next();
