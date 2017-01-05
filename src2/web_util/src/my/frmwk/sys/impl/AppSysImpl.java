@@ -53,15 +53,17 @@ public class AppSysImpl implements AppSys {
 	 * 
 	 * @param confPath
 	 * @param hibernateCfgPath
-	 * @param logerFilePath
+	 * @param logFile
+	 * @param logPath
+	 * @param logExt
 	 */
-	public AppSysImpl( String confPath, String hibernateCfgPath, String logerFilePath ) {
+	public AppSysImpl( String confPath, String hibernateCfgPath, String logFile, String logPath, String logExt ) {
 		if(null!=confPath){
 			loadConf(confPath);
 		}
 		hibernateConfig = new Configuration();
 		hibernateConfig.configure( hibernateCfgPath);
-		logger = null==logerFilePath ? new LoggerOutputForDebug() :new LoggerFileImpl(logerFilePath);
+		logger = null==logFile ? new LoggerOutputForDebug() :new LoggerFileImpl( logFile,  logPath,  logExt);
 	}
 
 	/**

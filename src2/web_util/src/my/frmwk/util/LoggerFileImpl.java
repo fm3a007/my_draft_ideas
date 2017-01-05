@@ -16,6 +16,7 @@ package my.frmwk.util;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -26,27 +27,59 @@ import java.util.Date;
  */
 public class LoggerFileImpl extends Logger {
 
-	protected String file;
+	protected String path;
+	
+	protected	String name;
+	
+	protected	String ext;
 
 	protected FileOutputStream fs;
 
 	protected int logId;
+	
+	protected	int	dateNum;
 
-	public LoggerFileImpl(String path) {
-		file = path;
+	/**
+	 * @param name 日志文件名
+	 * @param path 日志输出路径
+	 * @param ext 后缀名(缺省:log)
+	 */
+	public LoggerFileImpl(String name, String path, String ext) {
+		this.path = null!=path? path : "";
+		this.name = null!=name? name: this.getClass().getSimpleName();
+		this.ext = null!=ext ? ext : "log";
+		
+		dateNum = -1;
+		
 		logId = 0;
 	}
 
-	protected boolean open() {
-		if (null == fs) {
+	protected boolean open( Date now) {
+		int	curDate = null==now ? dateNum : now.getDate();
+		if (null == fs || curDate!=dateNum ) {
+			FileOutputStream fs0 = null;
 			try {
-				synchronized (file) {
-					if (null == fs) {
-						fs = new FileOutputStream(file, true);
-					}
+				synchronized (path) {
+					SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd"); 
+					Date	d = new Date();
+					String fullPath = path + name + "." + fmt.format(d)+ "." + ext;
+					dateNum = d.getDate();
+
+					fs0 = fs;
+					fs = new FileOutputStream(fullPath, true);
 				}
 			} catch (FileNotFoundException e) {
-				System.out.println("Can't find log file " + file);
+				fs0 = null;
+				System.out.println("Can't find log path " + path);
+			}
+			if(null!=fs0){
+				synchronized (fs0) {
+					try {
+						fs0.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
 			}
 		}
 		return (null == fs ? false : true);
@@ -65,8 +98,10 @@ public class LoggerFileImpl extends Logger {
 
 	@Override
 	public int update_log(int log_id, int status) {
-		if (open()) {
-			String msg = "\t" + log_id + " result:\t" + status + "\n";
+		if (open(null)) {
+			Date now = new Date();
+			SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+			String msg = log_id +":\t" + fmt.format(now)+" result: "+ status + "\n";
 			try {
 				synchronized (fs) {
 					fs.write(msg.getBytes());
@@ -80,7 +115,7 @@ public class LoggerFileImpl extends Logger {
 
 	@Override
 	protected void finalize() throws Throwable {
-		this.file = null;
+		this.path = null;
 		if (null != fs) {
 			this.close();
 		}
@@ -90,13 +125,16 @@ public class LoggerFileImpl extends Logger {
 	@Override
 	public int log(int MOD_COD, int uid, String msg, int status, int type) {
 		int log_id = 0;
-		if (open()) {
-			synchronized (file) {
+		Date now = new Date();
+		if (open(now)) {
+			synchronized (path) {
 				log_id = ++logId;
 			}
-			String lmsg = log_id + ":\t" + new Date() + " user <id:" + uid
-					+ ">" + " access system module <" + MOD_COD + ">, " + msg
-					+ "\n\tLog Type:" + type + "\n";
+
+			SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+			String lmsg = log_id + ":\t" + fmt.format(now) + " log type " + type + ", user <id:" + uid
+					+ ">, module " + MOD_COD + ": " + msg
+					+ "\n";
 			try {
 				synchronized (fs) {
 					fs.write(lmsg.getBytes());

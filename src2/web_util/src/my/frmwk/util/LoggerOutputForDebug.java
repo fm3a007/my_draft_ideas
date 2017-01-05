@@ -15,6 +15,7 @@
 
 package my.frmwk.util;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -35,7 +36,9 @@ public class LoggerOutputForDebug extends Logger {
 
 	@Override
 	public int update_log(int log_id, int status) {
-		String msg = "\t" + log_id + " result:\t" + status + "\n";
+		Date now = new Date();
+		SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+		String msg = log_id +":\t" + fmt.format(now)+" result: "+ status + "\n";
 		try {
 				System.out.print(msg);
 		} catch (Exception e) {
@@ -52,9 +55,11 @@ public class LoggerOutputForDebug extends Logger {
 			log_id = ++logId;
 		}
 
-		String lmsg = log_id + ":\t" + new Date() + " user <id:" + uid + ">"
-				+ " access system module <" + MOD_COD + ">, " + msg
-				+ "\n\tLog Type:" + type + "\n";
+		Date now = new Date();
+		SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+		String lmsg = log_id + ":\t" + fmt.format(now) + " log type " + type + ", user <id:" + uid
+				+ ">, module " + MOD_COD + ": " + msg
+				+ "\n";
 		try {
 			System.out.print(lmsg);
 		} catch (Exception e) {
