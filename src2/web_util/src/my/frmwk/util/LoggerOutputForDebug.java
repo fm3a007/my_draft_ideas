@@ -49,7 +49,7 @@ public class LoggerOutputForDebug extends Logger {
 
 
 	@Override
-	public int log(int MOD_COD, int uid, String msg, int status, int type) {
+	public int log( int level, int MOD_COD, int uid, String msg, int status) {
 		int log_id = 0;
 		synchronized (this) {
 			log_id = ++logId;
@@ -57,7 +57,7 @@ public class LoggerOutputForDebug extends Logger {
 
 		Date now = new Date();
 		SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-		String lmsg = log_id + ":\t" + fmt.format(now) + " log type " + type + ", user <id:" + uid
+		String lmsg = log_id + ":\t" + fmt.format(now) + " log level " + level + ", user <id:" + uid
 				+ ">, module " + MOD_COD + ": " + msg
 				+ "\n";
 		try {

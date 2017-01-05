@@ -69,7 +69,7 @@ public class LoginService
 	public int login(String user, String psw, String desc) {
 		this.user = user;
 		this.psw = psw;
-		int id = loger.log( 0, 0, user+" attempt to login, "+desc);
+		int id = loger.log( Logger.L_BS_OPERATE, 0, 0, user+" attempt to login, "+desc);
 		int ret = -1; //super.login(user, psw,desc);
 		bLogin = ret==0;
 		ret = ret==0?0:ErrorCode.ER_UNAUTHORIZED;

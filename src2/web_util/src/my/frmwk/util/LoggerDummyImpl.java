@@ -19,7 +19,7 @@ public class LoggerDummyImpl extends Logger {
 	 * @see my.webframework.util.Logger#log(int, int, java.lang.String, int, int)
 	 */
 	@Override
-	public int log(int MOD_COD, int uid, String msg, int status, int level) {
+	public int log(int level, int MOD_COD, int uid, String msg, int status) {
 		return ++m_nId;
 	}
 

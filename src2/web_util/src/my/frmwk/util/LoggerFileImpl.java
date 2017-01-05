@@ -129,7 +129,7 @@ public class LoggerFileImpl extends Logger {
 	}
 
 	@Override
-	public int log(int MOD_COD, int uid, String msg, int status, int level) {
+	public int log( int level, int MOD_COD, int uid, String msg, int status) {
 		int log_id = 0;
 		if( 0==(logLevel & level)){
 			return	0;
