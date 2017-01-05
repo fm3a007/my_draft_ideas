@@ -26,6 +26,8 @@ import java.util.Date;
  * 
  */
 public class LoggerFileImpl extends Logger {
+	
+	protected	int	logLevel = 2147483647;
 
 	protected String path;
 	
@@ -40,11 +42,12 @@ public class LoggerFileImpl extends Logger {
 	protected	int	dateNum;
 
 	/**
+	 * @param logLevel 日志级别, 记日志时与这个值按位与,结果非0时才记.
 	 * @param name 日志文件名
 	 * @param path 日志输出路径
 	 * @param ext 后缀名(缺省:log)
 	 */
-	public LoggerFileImpl(String name, String path, String ext) {
+	public LoggerFileImpl(int logLevel, String name, String path, String ext) {
 		this.path = null!=path? path : "";
 		this.name = null!=name? name: this.getClass().getSimpleName();
 		this.ext = null!=ext ? ext : "log";
@@ -70,7 +73,7 @@ public class LoggerFileImpl extends Logger {
 				}
 			} catch (FileNotFoundException e) {
 				fs0 = null;
-				System.out.println("Can't find log path " + path);
+				e.printStackTrace();
 			}
 			if(null!=fs0){
 				synchronized (fs0) {
@@ -98,6 +101,9 @@ public class LoggerFileImpl extends Logger {
 
 	@Override
 	public int update_log(int log_id, int status) {
+		if(log_id<=0){
+			return	status;
+		}
 		if (open(null)) {
 			Date now = new Date();
 			SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
@@ -123,16 +129,22 @@ public class LoggerFileImpl extends Logger {
 	}
 
 	@Override
-	public int log(int MOD_COD, int uid, String msg, int status, int type) {
+	public int log(int MOD_COD, int uid, String msg, int status, int level) {
 		int log_id = 0;
+		if( 0==(logLevel & level)){
+			return	0;
+		}
 		Date now = new Date();
 		if (open(now)) {
 			synchronized (path) {
 				log_id = ++logId;
+				if(logId>2000000000){
+					logId = 0;
+				}
 			}
 
 			SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-			String lmsg = log_id + ":\t" + fmt.format(now) + " log type " + type + ", user <id:" + uid
+			String lmsg = log_id + ":\t" + fmt.format(now) + " log level " + level + ", user <id:" + uid
 					+ ">, module " + MOD_COD + ": " + msg
 					+ "\n";
 			try {

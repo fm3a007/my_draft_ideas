@@ -80,7 +80,7 @@ public class theApp {
 	protected theApp( ) {
 		String path = Thread.currentThread().getContextClassLoader().getResource("").getPath();
 		path += cfgPath;
-		sys = new AppSysImpl( path,  hibernateCfg, null,null,null);
+		sys = new AppSysImpl( path,  hibernateCfg, null,null,null,0);
 		sys.start();
 	}
 
