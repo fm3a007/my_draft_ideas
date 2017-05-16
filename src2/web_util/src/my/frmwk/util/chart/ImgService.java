@@ -72,7 +72,8 @@ import com.sun.org.apache.xml.internal.security.utils.Base64;
  * @author David
  * @version 1.0
  */
-public class ImgService {
+public class ImgService implements ImgJChartProviderIntf
+{
 	
 	public static String encode2Base64( JFreeChart chart, int width, int height){
 		ByteArrayOutputStream bas = new ByteArrayOutputStream();
@@ -245,7 +246,7 @@ public class ImgService {
 		// 设置柱的透明度
 		plot.setForegroundAlpha(0.8f);
 		plot.setOutlinePaint( new   Color(62, 62, 62));    
-		plot.setRangeGridlinePaint(null);
+		plot.setRangeGridlinePaint( new Color(255,255,255));
 		return chart;
 	}
 
@@ -274,7 +275,7 @@ public class ImgService {
 		// 取得CategoryPlot对象的引用，通过这个对象可以对图标进行具体的设置
 		CategoryPlot plot = (CategoryPlot) chart.getPlot();
 		plot.setBackgroundPaint(new Color(255, 254, 223));
-		plot.setRangeGridlinePaint(null);
+		plot.setRangeGridlinePaint(new Color(255,255,255));
 		plot.setOutlinePaint( new   Color(62, 62, 62));    
 
 		// 显示柱体代表的值

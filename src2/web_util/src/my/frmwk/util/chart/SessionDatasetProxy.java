@@ -47,12 +47,12 @@ public class SessionDatasetProxy {
 	
 	public int init( HttpSession s, String pref){
 //		System.out.println(this.getClass().getName()+" is called!");
-        StackTraceElement[] ste = new Throwable().getStackTrace();
+//      StackTraceElement[] ste = new Throwable().getStackTrace();
 //		System.out.println( "Location:" + ste[ste.length-1].getLineNumber());
 		if(null != pref)
 			strPref = pref;
 		else
-			strPref = "soc_img";
+			strPref = this.getClass().getName();
 
 		session = s;
 		if(null==session)
@@ -65,7 +65,7 @@ public class SessionDatasetProxy {
 	 */
 	public SessionDatasetProxy( HttpSession s){
 //		System.out.println(this.getClass().getName()+" is called!");
-        StackTraceElement[] ste = new Throwable().getStackTrace();
+//      StackTraceElement[] ste = new Throwable().getStackTrace();
 //		System.out.println( "Location:" + ste[ste.length-1].getLineNumber());
 		init( s, null);
 	}
@@ -86,7 +86,7 @@ public class SessionDatasetProxy {
 	 * 		Since dataset is retrived, dataset will be cleared to free resource
 	 */
 	public	Object getData( int id){
-		return	getData(id, true);
+		return	getData(id, false);
 	}
 
 	/**
@@ -116,18 +116,19 @@ public class SessionDatasetProxy {
 	synchronized  protected	int	getNextDatasetId(){		
 		if(null==session)
 			return	-1;
-		
-		String	strAtr = strPref+"_last_id";
-		Object o = session.getAttribute(strAtr);
-		int iCur = ( null==o ? 0 : (Integer)o );
-		
-		int iNext = iCur + 1;
-		//	maximum 1000 thought to be enough
-		//	can be set to larger, but cause server heavier loading
-		iNext %= 1000;	
-		session.setAttribute(strAtr, iNext);
-		
-		return	iCur;
+		synchronized  ( session){
+			String	strAtr = strPref+"_last_id";
+			Object o = session.getAttribute(strAtr);
+			int iCur = ( null==o ? 0 : (Integer)o );
+			
+			int iNext = iCur + 1;
+			//	maximum 1000 thought to be enough
+			//	can be set to larger, but cause server heavier loading
+			iNext %= 1000;	
+			session.setAttribute(strAtr, iNext);
+			
+			return	iCur;
+		}
 	}
 	
 	/**

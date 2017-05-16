@@ -107,10 +107,17 @@ public class ImgProxy extends ImgService {
 		}
 
 		int chartId = Integer.parseInt(c);
-		ds = ssPrx.getData(chartId, true);
+
+		int chartTypeId = Integer.parseInt(t);
+		if(0==chartTypeId){
+			ImgJChartProviderIntf prvd = (ImgJChartProviderIntf)ssPrx.getData(chartId);
+			return	prvd.getChart();
+		}
+
+		ds = ssPrx.getData(chartId);
 		// release session_storage_data
 		ssPrx.clearData(chartId);
-		return getChart( Integer.parseInt(t));
+		return getChart( chartTypeId);
 	}
 
 

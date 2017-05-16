@@ -6,6 +6,7 @@ demo_report_process prs = new demo_report_process();
 BarChartDataSet bar = prs.getBarChartReport();
 PieChartDataSet pie = prs.getPieChartReport();
 TrendsChartDataSet trend = prs.getTrendsChartReport();
+ImgService imgSvc = new ImgService(pie,2);
 %>
 <html>
 <head>
@@ -59,7 +60,7 @@ TrendsChartDataSet trend = prs.getTrendsChartReport();
 		</tr>
 		<tr> 
 		  
-      <td colspan="2"><img src="img.jsp?c=<%=sPrx.saveData( bar)%>&t=1&size=233&width=999" width="600" height="400"></td>
+      <td colspan="2"><img src="img.jsp?c=<%=sPrx.saveData( bar)%>&t=1&h=640&w=999" width="600" height="400"></td>
 		  <td>1</td>
 		</tr>
 		<tr>
@@ -67,7 +68,11 @@ TrendsChartDataSet trend = prs.getTrendsChartReport();
 		  <td>&nbsp;</td>
     </tr>
 		<tr>
-		  <td colspan="2"><img src="img.jsp?c=<%=sPrx.saveData( pie)%>&t=2&size=233&width=999" width="600" height="400"></td>
+		  <td colspan="2"><img src="img.jsp?c=<%=sPrx.saveData( imgSvc)%>&t=0&h=640&w=999" width="600" height="400"></td>
+		  <td>2</td>
+    </tr>
+		<tr>
+		  <td colspan="2"><img src="img.jsp?c=<%=sPrx.saveData( pie)%>&t=2&h=640&w=999" width="600" height="400"></td>
 		  <td>2</td>
     </tr>
 		<tr>
@@ -75,7 +80,7 @@ TrendsChartDataSet trend = prs.getTrendsChartReport();
 		  <td>&nbsp;</td>
     </tr>
 		<tr>
-		  <td colspan="2"><img src="img.jsp?c=<%=sPrx.saveData( trend)%>&t=3&size=233&width=999" width="600" height="400"></td>
+		  <td colspan="2"><img src="img.jsp?c=<%=sPrx.saveData( trend)%>&t=3&h=640&w=999" width="600" height="400"></td>
 		  <td>3</td>
     </tr>
 		<tr>
@@ -83,7 +88,7 @@ TrendsChartDataSet trend = prs.getTrendsChartReport();
 		  <td>&nbsp;</td>
     </tr>
 		<tr>
-		  <td colspan="2"><img src="img.jsp?c=<%=sPrx.saveData( bar)%>&t=4&size=233&width=999" width="600" height="400"></td>
+		  <td colspan="2"><img src="img.jsp?c=<%=sPrx.saveData( bar)%>&t=4&h=640&w=999" width="600" height="400"></td>
 		  <td>4</td>
     </tr>
 		<tr>
@@ -91,11 +96,11 @@ TrendsChartDataSet trend = prs.getTrendsChartReport();
 		  <td>&nbsp;</td>
     </tr>
 		<tr>
-		  <td colspan="2"><img src="img.jsp?c=<%=sPrx.saveData( bar)%>&t=5&size=233&width=999" width="600" height="400"></td>
+		  <td colspan="2"><img src="img.jsp?c=<%=sPrx.saveData( bar)%>&t=5&h=640&w=999" width="600" height="400"></td>
 		  <td>5</td>
     </tr>
 		<tr>
-		  <td colspan="2"><img src="img.jsp?c=<%=sPrx.saveData( bar)%>&t=6&size=233&width=999" width="600" height="400"></td>
+		  <td colspan="2"><img src="img.jsp?c=<%=sPrx.saveData( bar)%>&t=6&h=640&w=999" width="600" height="400"></td>
 		  <td>6</td>
     </tr>
     </tr>
@@ -104,5 +109,5 @@ TrendsChartDataSet trend = prs.getTrendsChartReport();
 </body>
 </html>
 <%
-	System.out.println(this.getClass().getName()+" is called! end -------------");
+	System.out.println(request.getRequestURI()+" is called! end -------------");
 %>
