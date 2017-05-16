@@ -106,7 +106,7 @@ public class LoggerFileImpl extends Logger {
 		}
 		if (open(null)) {
 			Date now = new Date();
-			SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+			SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S"); 
 			String msg = log_id +":\t" + fmt.format(now)+" result: "+ status + "\n";
 			try {
 				synchronized (fs) {
@@ -143,7 +143,7 @@ public class LoggerFileImpl extends Logger {
 				}
 			}
 
-			SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+			SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S"); 
 			String lmsg = log_id + ":\t" + fmt.format(now) + " log level " + level + ", user <id:" + uid
 					+ ">, module " + MOD_COD + ": " + msg
 					+ "\n";

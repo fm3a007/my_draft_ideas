@@ -37,14 +37,14 @@ public class LoggerOutputForDebug extends Logger {
 	@Override
 	public int update_log(int log_id, int status) {
 		Date now = new Date();
-		SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+		SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S"); 
 		String msg = log_id +":\t" + fmt.format(now)+" result: "+ status + "\n";
 		try {
 				System.out.print(msg);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return 0;
+		return status;
 	}
 
 
@@ -56,7 +56,7 @@ public class LoggerOutputForDebug extends Logger {
 		}
 
 		Date now = new Date();
-		SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+		SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S"); 
 		String lmsg = log_id + ":\t" + fmt.format(now) + " log level " + level + ", user <id:" + uid
 				+ ">, module " + MOD_COD + ": " + msg
 				+ "\n";
