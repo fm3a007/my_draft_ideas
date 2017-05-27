@@ -301,6 +301,7 @@ public class IPv4Util {
 	 * @param args
 	 * @throws Exception
 	 */
+	@SuppressWarnings("unused")
 	public static void main(String[] args) throws Exception {
 		String ipAddr = "192.168.8.1";
 

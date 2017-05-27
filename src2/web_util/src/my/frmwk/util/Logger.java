@@ -69,18 +69,19 @@ public abstract class Logger {
 	 * @param level	日志的级别, 见本类的常量定义
 	 * @param MOD_COD 模块代号
 	 * @param uid	用户ID, 如果是系统后台程序的操作,用户ID记为 0.
+	 * @param usr	用户名（可包含其他信息,如访问来源等).
 	 * @param msg	附加消息
 	 * @param status 日志的状态(操作执行的结果)
 	 * @return 当status为"未知状态"时,该方法的返回是日志记录ID(大于0); 0表示成功, 负数为出错.
 	 */
-	public abstract	int	log( int level, int MOD_COD, int uid, String msg, int status);
+	public abstract	int	log( int level, int MOD_COD, int uid, String usr, String msg, int status);
 
 	
 	/**
 	 * 记录业务日志的方法, 简化参数方便使用.
 	 */
-	public	int log( int level, int MOD_COD, int uid, String msg){
-		return log( L_BS_OPERATE, MOD_COD, uid, msg, STAT_UNKNOWN);
+	public	int log( int level, int MOD_COD, int uid, String usr, String msg){
+		return log( L_BS_OPERATE, MOD_COD, uid, usr, msg, STAT_UNKNOWN);
 	}
 
 	/**
@@ -98,7 +99,7 @@ public abstract class Logger {
 	 * 记录业务日志的方法, 简化参数方便使用.
 	 */
 	public int error(int MOD_COD, String msg) {
-		return log( L_ERROR, MOD_COD, 0, msg, 0);
+		return log( L_ERROR, MOD_COD, 0, "", msg, 0);
 	}
 	
 	
@@ -106,7 +107,7 @@ public abstract class Logger {
 	 * 记录业务日志的方法, 简化参数方便使用.
 	 */
 	public int debug(int MOD_COD, String msg) {
-		return log( L_DEBUG, MOD_COD, 0, msg, 0);
+		return log( L_DEBUG, MOD_COD, 0, "", msg, 0);
 	}
 
 }

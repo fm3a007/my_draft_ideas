@@ -2,10 +2,10 @@
  * \file
  * 最终产品的整合层程序文件.
  *
- * 
+ *
  *
  * @author David.Liang
- *  
+ *
  * These source files are released under the GPLv3 license.
  *
  * @version 1.0
@@ -22,11 +22,9 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import my.frmwk.sys.AppSys;
+import my.sys.DemoAppSys;
+
 
 
 /**
@@ -73,8 +71,12 @@ public class AppContextFilter implements Filter {
 		}
 		ServletRequest ct = request;
 		ct.setAttribute( 
-				AppSys.class.toGenericString(), 
-				app);
+				DemoAppSys.class.toGenericString(), 
+				app.sys);
+		ct.setAttribute( 
+				DemoAppSys.class.toGenericString(), 
+				app.sys);
+		
 		// pass the request along the filter chain
 		try{
 			chain.doFilter(request, response);

@@ -79,6 +79,9 @@ public class AppSysImpl implements AppSys {
 	 * @return
 	 */
 	public	int	stop(){
+		if(null!=sessionFactory){
+			sessionFactory.close();
+		}
 		return	0;
 	}
 

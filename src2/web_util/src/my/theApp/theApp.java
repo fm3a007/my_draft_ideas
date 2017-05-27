@@ -2,10 +2,10 @@
  * \file
  * 最终产品的整合层程序文件, @see theApp .
  *
- * 
+ *
  *
  * @author David.Liang
- *  
+ *
  * These source files are released under the GPLv3 license.
  *
  * @version 1.0
@@ -14,13 +14,7 @@
 
 package my.theApp;
 
-
-import org.hibernate.cfg.Configuration;
-
-import my.frmwk.sys.impl.AppSysImpl;
-
-
-
+import my.sys.impl.DemoAppSysImpl;
 
 /**
  * 最终的产品整合实例类.
@@ -36,13 +30,10 @@ public class theApp {
 	/** hibernate的配置文件 */
 	protected static String hibernateCfg = "config/hibernate.cfg.xml";
 	
-	public AppSysImpl sys;
+	public DemoAppSysImpl sys;
 	
 	/** 系统初始化函数, 有同步锁防止多人并发调用该函数. */
 	public static synchronized	int	init( ){
-		
-		System.out.println("the App initialization ... ");
-		
 		int	iRet = -1;
 		try{
 			if( null==app){
@@ -68,7 +59,6 @@ public class theApp {
 	}
 	
 	public	int	destroy(){
-		System.out.println("the App destroy() ...");
 		sys.stop();
 		return	0;
 	}
@@ -80,7 +70,7 @@ public class theApp {
 	protected theApp( ) {
 		String path = Thread.currentThread().getContextClassLoader().getResource("").getPath();
 		path += cfgPath;
-		sys = new AppSysImpl( path,  hibernateCfg, null,null,null,0);
+		sys = new DemoAppSysImpl( path,  hibernateCfg);
 		sys.start();
 	}
 
@@ -91,6 +81,7 @@ public class theApp {
 		// for functionality test	
 		theApp.init();
 		theApp app = theApp.getInst();
+		System.out.println( "theApp app:" +app.toString());
 	}
 
 }

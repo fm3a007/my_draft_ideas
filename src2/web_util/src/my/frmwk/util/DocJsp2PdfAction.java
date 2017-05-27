@@ -84,6 +84,7 @@ public class DocJsp2PdfAction {
 			buf = null;
 			pdfIS.close();
 		}
+		@SuppressWarnings("unused")
 		int status = converter.waitFor();// TODO: 要处理吗?
 		return 0; // or status ?
 	}

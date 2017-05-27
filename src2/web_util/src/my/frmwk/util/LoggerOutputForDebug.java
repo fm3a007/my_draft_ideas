@@ -32,12 +32,12 @@ public class LoggerOutputForDebug extends Logger {
 		logId = 0;
 	}
 
+	SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S"); 
 
 
 	@Override
 	public int update_log(int log_id, int status) {
 		Date now = new Date();
-		SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S"); 
 		String msg = log_id +":\t" + fmt.format(now)+" result: "+ status + "\n";
 		try {
 				System.out.print(msg);
@@ -49,16 +49,15 @@ public class LoggerOutputForDebug extends Logger {
 
 
 	@Override
-	public int log( int level, int MOD_COD, int uid, String msg, int status) {
+	public int log( int level, int MOD_COD, int uid, String usr, String msg, int status) {
 		int log_id = 0;
 		synchronized (this) {
 			log_id = ++logId;
 		}
 
 		Date now = new Date();
-		SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S"); 
 		String lmsg = log_id + ":\t" + fmt.format(now) + " log level " + level + ", user <id:" + uid
-				+ ">, module " + MOD_COD + ": " + msg
+				+ ">"+ usr+ ", module " + MOD_COD + ": " + msg
 				+ "\n";
 		try {
 			System.out.print(lmsg);

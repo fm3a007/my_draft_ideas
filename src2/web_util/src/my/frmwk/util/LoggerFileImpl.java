@@ -40,6 +40,8 @@ public class LoggerFileImpl extends Logger {
 	protected int logId;
 	
 	protected	int	dateNum;
+	
+	protected	SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S"); 
 
 	/**
 	 * @param logLevel 日志级别, 记日志时与这个值按位与,结果非0时才记.
@@ -106,7 +108,6 @@ public class LoggerFileImpl extends Logger {
 		}
 		if (open(null)) {
 			Date now = new Date();
-			SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S"); 
 			String msg = log_id +":\t" + fmt.format(now)+" result: "+ status + "\n";
 			try {
 				synchronized (fs) {
@@ -128,8 +129,9 @@ public class LoggerFileImpl extends Logger {
 		super.finalize();
 	}
 
+
 	@Override
-	public int log( int level, int MOD_COD, int uid, String msg, int status) {
+	public int log( int level, int MOD_COD, int uid, String usr, String msg, int status) {
 		int log_id = 0;
 		if( 0==(logLevel & level)){
 			return	0;
@@ -143,9 +145,8 @@ public class LoggerFileImpl extends Logger {
 				}
 			}
 
-			SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S"); 
 			String lmsg = log_id + ":\t" + fmt.format(now) + " log level " + level + ", user <id:" + uid
-					+ ">, module " + MOD_COD + ": " + msg
+					+ ">"+ usr+ ", module " + MOD_COD + ": " + msg
 					+ "\n";
 			try {
 				synchronized (fs) {

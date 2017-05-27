@@ -1,15 +1,18 @@
 /**
  * \file
- * 保存错误码及其含义.
+ *
+ * 该类定义各模块里用到的错误码及其含义.
+ * 
+ * =============该类定义各模块里用到的错误码及其含义===========。
  * 
  * 
  * 
- * copyright (C) 2000, 2011
  * 
  * 
- * 
- * @author Liang,David
- *  
+ * These source files are released under the GPLv3 license.
+ *
+ * @author 
+ *
  */
 
 package my.frmwk.util;
@@ -47,7 +50,12 @@ public class ErrorCode {
 	public final static int ER_SAVE_CONFIG_FAILED = add(-6, "Failed to saving configuration!","保存配置失败");
 	public final static int ER_DBMS_OP_FAILED = add(-7, "DBMS operation failed!","数据库操作失败");
 	public	final static int ER_NETWORK_FAILED = add(-8, "Network communication error!", "网络通讯出错");
+	public	final static int ER_NO_PRIVILEGE = add(-9, "Insufficient privilege", "权限不足");
+	public final static int ER_UNAUTHORIZED = add(-10, "User is NOT authorized!","用户无法通过身份验证!");
+	public final static int ER_OPERATE_THROW_EXCEPIOTN = add(-11, "Operation throw exception","操作异常");
+	public final static int ER_LOGIN_CONFIG_FAILED = add(-12, "Login failure!","登录失败");
 
+	
 
 	// *** CAUTION *** 其他程序片段的错误码请勿定义在自己的代码文件,以方便维护.
 
