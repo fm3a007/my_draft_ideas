@@ -36,6 +36,7 @@ public class StartAndEndDate {
 	 * @param date
 	 * @return
 	 */
+	@SuppressWarnings("deprecation")
 	public  Date[] getMonthStartAndEndDate(Date date) {
 		Date[] dates = new Date[2];
 		int m = date.getMonth();
@@ -51,6 +52,7 @@ public class StartAndEndDate {
 	 * @param date
 	 * @return
 	 */
+	@SuppressWarnings({ "deprecation", "unused" })
 	public Date[] getYearStartAndEndDate(Date date) {
 		Date[] dates = new Date[2];
 		int m = date.getMonth();

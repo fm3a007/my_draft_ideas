@@ -26,6 +26,7 @@ public class FlexPieDataSet {
 	private	String	title;
 	private	Map<String,Long> map;
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public	FlexPieDataSet( String title, Map map){
 		this.title = title;
 		this.map = map;

@@ -252,6 +252,7 @@ public class BufResponse implements HttpServletResponse {
 	/**
 	 * @see javax.servlet.http.HttpServletResponse#encodeRedirectUrl(java.lang.String)
 	 */
+	@SuppressWarnings("deprecation")
 	@Override
 	public String encodeRedirectUrl(String arg0) {
 		if( null!=oldResponse){
@@ -274,6 +275,7 @@ public class BufResponse implements HttpServletResponse {
 	/**
 	 * @see javax.servlet.http.HttpServletResponse#encodeUrl(java.lang.String)
 	 */
+	@SuppressWarnings("deprecation")
 	@Override
 	public String encodeUrl(String arg0) {
 		if( null!=oldResponse){

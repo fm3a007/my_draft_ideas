@@ -25,6 +25,7 @@ import java.util.Map;
 public class FlexBarDataSet {
 	
 	private	String	title;
+	@SuppressWarnings("rawtypes")
 	private	Map map;
 	private	String	CatecategoryAxisLabel;
 	private	String	valueAxisLabel;
@@ -38,11 +39,12 @@ public class FlexBarDataSet {
 		this.group = group;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public Map getMap() {
 		return map;
 	}
 
-	public void setMap(Map map) {
+	public void setMap(@SuppressWarnings("rawtypes") Map map) {
 		this.map = map;
 	}
 
@@ -72,6 +74,7 @@ public class FlexBarDataSet {
 		this.valueAxisLabel = valueAxisLabel;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public	FlexBarDataSet( String title, Map map,
 			String CatecategoryAxisLabel, String valueAxisLabel){
 		this.title = title;

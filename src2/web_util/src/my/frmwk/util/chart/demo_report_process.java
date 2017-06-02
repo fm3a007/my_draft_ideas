@@ -33,7 +33,6 @@ public class demo_report_process {
 	/**
 	 * @return	a JfreeChart for output, null if error occur!
 	 */
-	@SuppressWarnings("deprecation")
 	public BarChartDataSet  getBarChartReport() {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		dataset.addValue(150, "北京", "苹果");
@@ -62,7 +61,6 @@ public class demo_report_process {
 	/**
 	 * @return	a JfreeChart for output, null if error occur!
 	 */
-	@SuppressWarnings("deprecation")
 	public PieChartDataSet  getPieChartReport() {
         DefaultPieDataset dataset = new DefaultPieDataset();
         dataset.setValue("图书", new Double(33.2));
@@ -111,12 +109,5 @@ public class demo_report_process {
         return trend;   
     }  
 	
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 
 }

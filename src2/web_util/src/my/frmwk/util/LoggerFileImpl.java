@@ -59,6 +59,7 @@ public class LoggerFileImpl extends Logger {
 		logId = 0;
 	}
 
+	@SuppressWarnings("deprecation")
 	protected boolean open( Date now) {
 		int	curDate = null==now ? dateNum : now.getDate();
 		if (null == fs || curDate!=dateNum ) {

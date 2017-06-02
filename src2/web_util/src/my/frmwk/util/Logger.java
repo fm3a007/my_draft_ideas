@@ -49,6 +49,9 @@ public abstract class Logger {
 	/** 日志级别常量定义, 业务操作类日志  */
 	public final static int	L_BS_OPERATE = 1 << 9;
 	
+	/** 日志级别常量定义, 查询缓存(往往要求较高性能) */
+	public final static int	L_BUF_QUERY =  1<<10;
+
 	
 	/** 日志状态常量定义, 代表未知状态（操作没执行完成） */
 	//public final static int STAT_UNKNOWN = ErrorCode.ER_UNKNOWN;
@@ -81,7 +84,7 @@ public abstract class Logger {
 	 * 记录业务日志的方法, 简化参数方便使用.
 	 */
 	public	int log( int level, int MOD_COD, int uid, String usr, String msg){
-		return log( L_BS_OPERATE, MOD_COD, uid, usr, msg, STAT_UNKNOWN);
+		return log( level, MOD_COD, uid, usr, msg, STAT_UNKNOWN);
 	}
 
 	/**

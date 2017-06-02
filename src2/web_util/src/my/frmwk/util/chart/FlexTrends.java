@@ -15,7 +15,6 @@
 package my.frmwk.util.chart;
 
 import java.util.List;
-import java.util.Map;
 
 import org.jfree.chart.JFreeChart;
 

@@ -1,14 +1,15 @@
 /**
  * \file
- *
+ * 
  * 该类定义各模块里用到的错误码及其含义.
+ * These modules are released under the GPLv3 license.
  * 
  * =============该类定义各模块里用到的错误码及其含义===========。
  * 
  * 
  * 
  * 
- * 
+ *  
  * These source files are released under the GPLv3 license.
  *
  * @author 
@@ -54,8 +55,8 @@ public class ErrorCode {
 	public final static int ER_UNAUTHORIZED = add(-10, "User is NOT authorized!","用户无法通过身份验证!");
 	public final static int ER_OPERATE_THROW_EXCEPIOTN = add(-11, "Operation throw exception","操作异常");
 	public final static int ER_LOGIN_CONFIG_FAILED = add(-12, "Login failure!","登录失败");
-
 	
+
 
 	// *** CAUTION *** 其他程序片段的错误码请勿定义在自己的代码文件,以方便维护.
 

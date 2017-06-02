@@ -188,8 +188,8 @@ public class AppSysImpl implements AppSys {
 			try {
 				Reader reader = new InputStreamReader(file, "UTF-8");
 				pro.load(reader);
-				Set keyValue = pro.keySet();
-				for (Iterator it = keyValue.iterator(); it.hasNext();){
+				Set<Object> keyValue = pro.keySet();
+				for (Iterator<Object> it = keyValue.iterator(); it.hasNext();){
 					String key = (String) it.next();
 					setConfString(key, pro.getProperty(key));
 				}

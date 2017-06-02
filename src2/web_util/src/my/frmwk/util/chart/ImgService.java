@@ -22,9 +22,7 @@ package my.frmwk.util.chart;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -39,8 +37,6 @@ import org.jfree.chart.axis.DateTickUnit;
 import org.jfree.chart.axis.DateTickUnitType;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.axis.NumberTickUnit;
-import org.jfree.chart.axis.ValueAxis;
-import org.jfree.chart.labels.CategoryItemLabelGenerator;
 import org.jfree.chart.labels.ItemLabelAnchor;
 import org.jfree.chart.labels.ItemLabelPosition;
 import org.jfree.chart.labels.StandardCategoryItemLabelGenerator;
@@ -48,7 +44,6 @@ import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PiePlot3D;
-import org.jfree.chart.plot.Plot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.category.BarRenderer;
@@ -58,7 +53,6 @@ import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.ui.TextAnchor;
 import org.jfree.util.Rotation;
 
-import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
 import com.sun.org.apache.xml.internal.security.utils.Base64;
 
 /**
@@ -150,6 +144,7 @@ public class ImgService implements ImgJChartProviderIntf
 		ChartFactory.setChartTheme(standardChartTheme);
 	}
 
+	@SuppressWarnings("deprecation")
 	protected JFreeChart getBarChart( ) {
 		BarChartDataSet ds = (BarChartDataSet) this.ds;
 
@@ -199,6 +194,7 @@ public class ImgService implements ImgJChartProviderIntf
 		return chart;
 	}
 
+	@SuppressWarnings("deprecation")
 	protected JFreeChart getIndexBarChart( ) {
 
 		BarChartDataSet ds = (BarChartDataSet) this.ds;
@@ -308,6 +304,7 @@ public class ImgService implements ImgJChartProviderIntf
 	 * @param type
 	 * @return
 	 */
+	@SuppressWarnings("deprecation")
 	protected JFreeChart getStackedBarChart3D( ) {
 
 		BarChartDataSet ds = (BarChartDataSet) this.ds;
@@ -361,6 +358,7 @@ public class ImgService implements ImgJChartProviderIntf
 		return chart;
 	}
 
+	@SuppressWarnings("deprecation")
 	protected JFreeChart getPieChart( ) {
 		PieChartDataSet ds = (PieChartDataSet) this.ds;
 
@@ -411,6 +409,7 @@ public class ImgService implements ImgJChartProviderIntf
 		return chart;
 	}
 
+	@SuppressWarnings("deprecation")
 	protected JFreeChart getTrendsChart( ) {
 		TrendsChartDataSet ds = (TrendsChartDataSet) this.ds;
 
@@ -448,6 +447,7 @@ public class ImgService implements ImgJChartProviderIntf
 		return chart;
 	}
 
+	@SuppressWarnings("deprecation")
 	protected JFreeChart getMonthTrendsChart( ) {
 		TrendsChartDataSet ds = (TrendsChartDataSet) this.ds;
 
@@ -485,6 +485,7 @@ public class ImgService implements ImgJChartProviderIntf
 		return chart;
 	}
 	
+	@SuppressWarnings("deprecation")
 	protected JFreeChart getYearTrendsChart( ) {
 		TrendsChartDataSet ds = (TrendsChartDataSet) this.ds;
 

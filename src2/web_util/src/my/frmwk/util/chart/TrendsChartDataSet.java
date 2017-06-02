@@ -15,7 +15,6 @@
 package my.frmwk.util.chart;
 
 import org.jfree.data.xy.XYDataset;
-import org.jfree.data.xy.XYSeriesCollection;
 
 
 /**
