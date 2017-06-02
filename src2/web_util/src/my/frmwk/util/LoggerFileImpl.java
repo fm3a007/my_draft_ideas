@@ -50,6 +50,7 @@ public class LoggerFileImpl extends Logger {
 	 * @param ext 后缀名(缺省:log)
 	 */
 	public LoggerFileImpl(int logLevel, String name, String path, String ext) {
+		this.logLevel = logLevel;
 		this.path = null!=path? path : "";
 		this.name = null!=name? name: this.getClass().getSimpleName();
 		this.ext = null!=ext ? ext : "log";
