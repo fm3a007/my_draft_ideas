@@ -99,6 +99,7 @@ public abstract class BaseDbDao {
 		return	0;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public Object get(Class c, Serializable id) {
 		return sess.get( c, id);
 	}

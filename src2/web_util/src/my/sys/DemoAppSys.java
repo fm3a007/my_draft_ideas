@@ -53,6 +53,6 @@ public interface DemoAppSys extends AppSys {
 	 * \n
 	 * 调用方式: [Y]多线程并发调用, [Y]后台定时触发/[N]外部触发 \n
 	 */
-	public	LoginService	getOpKpiAppSysLoginSvcObj();
+	public	LoginService	getLoginSvcObjOfAppSys();
 	
 }

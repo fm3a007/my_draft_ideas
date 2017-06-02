@@ -16,6 +16,7 @@ package my.frmwk.util;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -29,15 +30,17 @@ public class LoggerFileImpl extends Logger {
 	
 	protected	int	logLevel = 2147483647;
 
-	protected String path;
+	protected	String path;
+	
+	protected	boolean	externalOutput = false;
 	
 	protected	String name;
 	
 	protected	String ext;
 
-	protected FileOutputStream fs;
+	protected	OutputStream fs;
 
-	protected int logId;
+	protected	int logId;
 	
 	protected	int	dateNum;
 	
@@ -59,12 +62,21 @@ public class LoggerFileImpl extends Logger {
 		
 		logId = 0;
 	}
+	
+	public LoggerFileImpl(int logLevel, OutputStream os) {
+		externalOutput = true;
+		this.logLevel = logLevel;
+		fs = os;
+	}
 
 	@SuppressWarnings("deprecation")
 	protected boolean open( Date now) {
+		if(externalOutput){
+			return	true;
+		}
 		int	curDate = null==now ? dateNum : now.getDate();
 		if (null == fs || curDate!=dateNum ) {
-			FileOutputStream fs0 = null;
+			OutputStream fs0 = null;
 			try {
 				synchronized (path) {
 					SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd"); 
@@ -93,13 +105,14 @@ public class LoggerFileImpl extends Logger {
 	}
 
 	public void close() {
-		if (null != fs) {
-			try {
-				fs.close();
-				fs = null;
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		if ( externalOutput || null == fs) {
+			return;
+		}
+		try {
+			fs.close();
+			fs = null;
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -140,21 +153,23 @@ public class LoggerFileImpl extends Logger {
 		}
 		Date now = new Date();
 		if (open(now)) {
-			synchronized (path) {
+			synchronized (fs) {
 				log_id = ++logId;
 				if(logId>2000000000){
 					logId = 0;
 				}
 			}
 
-			String lmsg = log_id + ":\t" + fmt.format(now) + " log level " + level + ", user <id:" + uid
-					+ ">"+ usr+ ", module " + MOD_COD + ": " + msg
-					+ "\n";
+			StringBuffer lmsg = new StringBuffer();
+			lmsg.append(log_id).append(":\t").append(fmt.format(now)).append(
+					" log level ").append(level).append(", user <id:").append(uid).append(
+					">").append(usr).append(", module ").append(MOD_COD).append(
+					": ").append(msg).append("\n");
 			try {
 				synchronized (fs) {
-					fs.write(lmsg.getBytes());
+					fs.write(lmsg.toString().getBytes());
 				}
-			} catch (IOException e) {
+			}catch (IOException e) {
 				e.printStackTrace();
 			}
 			if (STAT_UNKNOWN != status) {
@@ -164,5 +179,4 @@ public class LoggerFileImpl extends Logger {
 		}
 		return log_id;
 	}
-
 }

@@ -136,7 +136,7 @@ public class DemoAppSysImpl extends AppSysImpl implements DemoAppSys, Runnable {
 	}
 
 	@Override
-	public LoginService getOpKpiAppSysLoginSvcObj() {
+	public LoginService getLoginSvcObjOfAppSys() {
 		return m_loginSvcOfAppSys;
 	}
 	

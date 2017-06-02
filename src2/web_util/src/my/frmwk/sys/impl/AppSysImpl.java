@@ -33,7 +33,6 @@ import org.hibernate.cfg.Configuration;
 import my.frmwk.sys.AppSys;
 import my.frmwk.util.Logger;
 import my.frmwk.util.LoggerFileImpl;
-import my.frmwk.util.LoggerOutputForDebug;
 
 /**
  * @see AppSys.
@@ -63,7 +62,7 @@ public class AppSysImpl implements AppSys {
 		}
 		hibernateConfig = new Configuration();
 		hibernateConfig.configure( hibernateCfgPath);
-		logger = null==logFile ? new LoggerOutputForDebug() :new LoggerFileImpl( logLevel, logFile,  logPath,  logExt);
+		logger = null==logFile ? new LoggerFileImpl(logLevel,System.out) :new LoggerFileImpl( logLevel, logFile,  logPath,  logExt);
 	}
 
 	/**
