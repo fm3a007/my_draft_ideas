@@ -35,6 +35,7 @@
 #include <fstream>
 #include <iomanip>
 #include <exception>
+#include <chrono>
 
 #if defined ( WITH_THREAD_SAFETY )
 #if defined ( _WITH_CXX11_ )
@@ -73,6 +74,28 @@ private:
 };
 
 
+#if defined ( _MSC_VER )
+
+//! C11 localtime
+static inline
+struct tm *my_localtime_s(const time_t * time, struct tm * result) {
+	if (0 != localtime_s(result, time)) {
+		return	NULL;
+	}
+	return	result;
+}
+
+#else	// POSIX
+
+//! C11 localtime
+static inline
+struct tm *my_localtime_s(const time_t * time, struct tm * result) {
+	return	localtime_r(time, result);
+}
+
+
+#endif	// #if defined ( _MSC_VER )
+
 
 int PlainLoggerImpl::log_stat(unsigned int log_id, int status)
 {
@@ -93,12 +116,14 @@ int PlainLoggerImpl::log_stat(unsigned int log_id, int status)
 	}
 
 	ostream & OS = *pOs;
-	time_t t = time(&t);
+	auto now = std::chrono::system_clock::now();
+	int ms = (int)(std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count()%1000);
+	time_t t = std::chrono::system_clock::to_time_t(now);
 	tm ttm;
-	memcpy( &ttm, localtime( &t), sizeof(tm));
+	my_localtime_s(&t, &ttm);
 	char cBuf[64];
-	sprintf( cBuf, "%d-%02d-%02d %02d:%02d:%02d\n", 
-		ttm.tm_year+1900, ttm.tm_mon+1, ttm.tm_mday, ttm.tm_hour, ttm.tm_min,ttm.tm_sec );
+	sprintf( cBuf, "%d-%02d-%02d %02d:%02d:%02d.%03d\n", 
+		ttm.tm_year+1900, ttm.tm_mon+1, ttm.tm_mday, ttm.tm_hour, ttm.tm_min,ttm.tm_sec, ms );
 	OS << cBuf <<
 		log_id << "\tlog_stat(): "<< status;
 	if( m_pTranProc){
@@ -132,12 +157,14 @@ unsigned int PlainLoggerImpl::log(int log_level, int fun_code, int u_id, const c
 		id = ++m_iId;
 	}while(0==id);
 
-	time_t t = time(&t);
+	auto now = std::chrono::system_clock::now();
+	int ms = (int)(std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count() % 1000);
+	time_t t = std::chrono::system_clock::to_time_t(now);
 	tm ttm;
-	memcpy( &ttm, localtime( &t), sizeof(tm));
+	my_localtime_s(&t, &ttm);
 	char cBuf[64];
-	sprintf( cBuf, "%d-%02d-%02d %02d:%02d:%02d\n", 
-		ttm.tm_year+1900, ttm.tm_mon+1, ttm.tm_mday, ttm.tm_hour, ttm.tm_min,ttm.tm_sec );
+	sprintf( cBuf, "%d-%02d-%02d %02d:%02d:%02d.%03d\n", 
+		ttm.tm_year+1900, ttm.tm_mon+1, ttm.tm_mday, ttm.tm_hour, ttm.tm_min,ttm.tm_sec, ms );
 
 	OS << cBuf /*ctime( &t)*/ << id << "\tlevel: "<<log_level<<",\tFunCode: " << fun_code << 
 		",\tuser_id: " << u_id << ",\tstatus: ";
@@ -207,7 +234,7 @@ std::string FileLoggerImpl::getNewFileName()
 	if( m_bNameWithDate){
 		time_t t = time(NULL);
 		tm tm;
-		memcpy( &tm, (void*)localtime( &t), sizeof(tm));
+		my_localtime_s(&t, &tm);
 		char buf[64];
 		sprintf( buf, ".%04d-%02d-%02d", tm.tm_year+1900, tm.tm_mon+1, tm.tm_mday);
 		file += buf;
@@ -222,7 +249,9 @@ std::string FileLoggerImpl::getNewFileName()
 bool FileLoggerImpl::isNewDay()
 {
 	time_t t = time(NULL);
-	int day = localtime( &t)->tm_mday;
+	tm tm;
+	my_localtime_s(&t, &tm);
+	int day = tm.tm_mday;
 	if(day!=m_iDay){
 		m_iDay = day;
 		return true;

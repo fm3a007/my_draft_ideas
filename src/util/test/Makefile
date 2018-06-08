@@ -16,10 +16,10 @@ CXXFLAGS = -Wall $(DEBUG) -fPIC
 BASE_PATH = ..
 SRC_PATH = $(BASE_PATH)/src
 
-INCLUDE = -I$(BASE_PATH)/include -I$(SRC_PATH) -I$(BASE_PATH) -I../../../lib/boost/boost_1_47_0
+INCLUDE = -I$(BASE_PATH)/include -I$(SRC_PATH) -I$(BASE_PATH) 
 
-LIBP = -L../../../lib/boost/lib
-LIBS = -lboost_filesystem -lboost_system 
+LIBP = 
+LIBS =  
 
 SRCS := $(wildcard $(SRC_PATH)/*.cpp)
 SRCC := $(wildcard $(SRC_PATH)/*.c)

@@ -11,6 +11,7 @@
 #include <crtdbg.h> 
 #endif //   _DEBUG
 
+#include "otl_customizing.h"
 #include "dbpool.h"
 #include <assert.h>
 #include <time.h>
